@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  requirements: MyText
+  company_logo_url: MyString
+  description: MyText
+  expires: 9.99
+  responsibilities: MyText
+  salary: 9.99
+
+two:
+  title: MyString
+  requirements: MyText
+  company_logo_url: MyString
+  description: MyText
+  expires: 9.99
+  responsibilities: MyText
+  salary: 9.99

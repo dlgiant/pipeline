@@ -1,0 +1,49 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Jobs</h1>
+
+<table> 
+  <tfoot>
+    <tr> 
+      <td colspan="3">
+	<%= link_to 'New Job', new_job_path %>
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="image">
+          <%= image_tag(job.company_logo_url, class:'list_image') %>
+        </td>
+        <td class="description">
+          <h1><%= job.title %></h1>
+          <p>
+	  <%= truncate(strip_tags(job.description), length: 80) %>
+          </p>
+	  <p>
+	  <%= job.expires %>
+	  </p>
+	  <p>
+	  <%= job.requirements %>
+ 	  </p>
+	  <p><%= job.responsibilities %></p>
+          <p><%= job.salary %></p>
+        </td>
+        <td class="actions">
+          <ul>
+            <li><%= link_to 'Show', job %></li>
+            <li><%= link_to 'Edit', edit_job_path(job) %></li>
+            <li><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
