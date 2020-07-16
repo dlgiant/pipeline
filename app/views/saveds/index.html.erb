@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Saveds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saveds.each do |saved| %>
+      <tr>
+        <td><%= link_to 'Show', saved %></td>
+        <td><%= link_to 'Edit', edit_saved_path(saved) %></td>
+        <td><%= link_to 'Destroy', saved, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Saved', new_saved_path %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :saveds
+  root 'dashboard#index', as: 'dashboard_index'
   resources :jobs
   get 'say/hello'
   get 'say/goodbye'

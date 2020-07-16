@@ -10,8 +10,23 @@
   </head>
 
   <body>
-    <main class='<%= controller.controller_name %>'>
-      <%= yield %>
-    </main>
+    <header class='main'>
+       <!-- Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+       <%= image_tag 'logo.svg', alt: 'Pipeline Careers' %>
+       <h1>Pipeline Carrers</h1>
+    </header>
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><a href="/">Home</a></li>    
+          <li><a href="/faq">FAQ</a></li>    
+          <li><a href="/contact">Contact</a></li>    
+          <li><a href="/about">About</a></li>    
+        </ul>
+      </nav>
+      <main class='<%= controller.controller_name %>'>
+        <%= yield %>
+      </main>
+    </section>
   </body>
 </html>

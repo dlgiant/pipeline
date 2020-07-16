@@ -39,6 +39,13 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to job_url(@job)
   end
 
+  test "can't delete job in saved" do
+    assert_difference('Job.count', 0) do
+      delete job_url(jobs(:two))
+    end
+    assert_redirected_to job_url
+  end
+
   test "should destroy job" do
     assert_difference('Job.count', -1) do
       delete job_url(@job)

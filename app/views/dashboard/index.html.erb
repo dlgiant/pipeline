@@ -1,0 +1,25 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Openings</h1>
+<ul class="catalog">
+  <% cache @jobs do %>
+    <% @jobs.each do |job| %>
+      <% cache job do %>
+        <li>
+          <%= image_tag(job.company_logo_url) %>
+          <h2><%= job.title %></h2>
+          <p>
+            <%= sanitize(job.description) %>
+          </p>
+          <div class="salary">
+            <%= number_to_currency(job.salary) %>
+            <br/>
+            <%= button_to 'Save', line_items_path(job_id: job) %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
