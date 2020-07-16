@@ -3,7 +3,7 @@
 one:
   title: MyString
   requirements: MyText
-  company_logo_url: MyString
+  company_logo_url: pipeline.jpg
   description: MyText
   expires: 9.99
   responsibilities: MyText
@@ -12,8 +12,15 @@ one:
 two:
   title: MyString
   requirements: MyText
-  company_logo_url: MyString
+  company_logo_url: pipeline.jpg
   description: MyText
   expires: 9.99
   responsibilities: MyText
   salary: 9.99
+
+webdev:
+  title: Web Designer
+  description: 
+    Must provide scalable svgs and custom images for website
+  salary: 0.0
+  company_logo_url: pipeline.jpg
