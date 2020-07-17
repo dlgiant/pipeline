@@ -14,7 +14,7 @@
             <%= sanitize(job.description) %>
           </p>
           <div class="salary">
-            <%= number_to_currency(job.salary) %>
+            <%= number_to_currency(job.salary) %>/<%= job.salary_type %>
             <br/>
             <%= button_to 'Save', line_items_path(job_id: job) %>
           </div>

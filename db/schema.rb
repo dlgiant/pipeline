@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_204732) do
+ActiveRecord::Schema.define(version: 2020_07_17_160743) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_204732) do
     t.decimal "salary", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "salary_type"
+    t.string "company_name"
   end
 
   create_table "line_items", force: :cascade do |t|

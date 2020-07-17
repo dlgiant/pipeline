@@ -18,7 +18,17 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job" do
     assert_difference('Job.count') do
-      post jobs_url, params: { job: { company_logo_url: @job.company_logo_url, description: @job.description, expires: @job.expires, requirements: @job.requirements, responsibilities: @job.responsibilities, salary: @job.salary, title: @title } }
+      post jobs_url, params: { 
+	job: { 
+	   company_logo_url: @job.company_logo_url, 
+           description: @job.description, 
+           expires: @job.expires, 
+           requirements: @job.requirements, 
+           responsibilities: @job.responsibilities, 
+           salary: @job.salary, 
+           title: @title, 
+        } 
+      }
     end
 
     assert_redirected_to job_url(Job.last)
@@ -35,7 +45,17 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job" do
-    patch job_url(@job), params: { job: { company_logo_url: @job.company_logo_url, description: @job.description, expires: @job.expires, requirements: @job.requirements, responsibilities: @job.responsibilities, salary: @job.salary, title: @title } }
+    patch job_url(@job), params: { 
+      job: { 
+        company_logo_url: @job.company_logo_url, 
+        description: @job.description, 
+        expires: @job.expires, 
+        requirements: @job.requirements, 
+        responsibilities: @job.responsibilities, 
+        salary: @job.salary, 
+        title: @title 
+      } 
+    }
     assert_redirected_to job_url(@job)
   end
 
@@ -43,14 +63,16 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Job.count', 0) do
       delete job_url(jobs(:two))
     end
-    assert_redirected_to job_url
+    assert_redirected_to jobs_url
   end
 
   test "should destroy job" do
     assert_difference('Job.count', -1) do
       delete job_url(@job)
     end
-
+    puts jobs_url
+    puts @job.title
+    puts @title
     assert_redirected_to jobs_url
   end
 end
