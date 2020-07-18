@@ -39,10 +39,12 @@ class SavedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy saved" do
+    post line_items_url, params: { job_id: jobs(:webdev).id }
+    @saved = Saved.find(session[:saved_id])
     assert_difference('Saved.count', -1) do
       delete saved_url(@saved)
     end
 
-    assert_redirected_to saveds_url
+    assert_redirected_to dashboard_index_url
   end
 end

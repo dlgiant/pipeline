@@ -70,9 +70,6 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Job.count', -1) do
       delete job_url(@job)
     end
-    puts jobs_url
-    puts @job.title
-    puts @title
     assert_redirected_to jobs_url
   end
 end

@@ -1,12 +1,22 @@
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
-<% end %>
-
-<h2>Saved Jobs</h2>
-<ul>
-  <% @saved.line_items.each do |item| %>
-    <li><%= item.job.title %></li>
+<article class="saveds">
+  <% if notice %>
+    <aside id="notice"><%= notice %></aside>
   <% end %>
-</ul>
-<%= link_to 'Edit', edit_saved_path(@saved) %> |
-<%= link_to 'Back', saveds_path %>
+  <% unless @saved.line_items.empty? %>
+  <h2>Saved Jobs</h2>
+  <table>
+    <tbody>
+    <% @saved.line_items.uniq{|item| item.job_id }.each do |item| %>
+      <tr>
+        <td><%= item.job.title %></td>
+        <td class="salary"><%= number_to_currency(item.job.salary) %>/<%= item.job.salary_type %></td>
+      <tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+      <p>You have <%= @saved.line_items.length %> saved jobs</p>
+    </tfoot>
+  </table>
+  <%= button_to 'Empty', @saved, method: :delete, data: { confirm: 'Are you sure?'} %>
+  <% end %>
+</article>

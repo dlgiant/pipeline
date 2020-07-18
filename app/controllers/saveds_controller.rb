@@ -1,5 +1,7 @@
 class SavedsController < ApplicationController
   before_action :set_saved, only: [:show, :edit, :update, :destroy]
+  
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_saved
 
   # GET /saveds
   # GET /saveds.json
@@ -54,11 +56,20 @@ class SavedsController < ApplicationController
   # DELETE /saveds/1
   # DELETE /saveds/1.json
   def destroy
-    @saved.destroy
+    @saved.destroy if @saved.id == session[:saved_id]
+    session[:saved_id] = nil
     respond_to do |format|
-      format.html { redirect_to saveds_url, notice: 'Saved was successfully destroyed.' }
+      format.html { 
+        redirect_to dashboard_index_url,
+        notice: 'No saved jobs'
+      }
       format.json { head :no_content }
     end
+  end
+
+  def invalid_saved
+    logger.error "Attempted to access invalid saved #{params[:id]}"
+    redirect_to dashboard_index_url, notice: 'Invalid Saved'
   end
 
   private
